@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allah's Names — 2026 Ramadan Series | Dr. Omar Suleiman</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-series">2026 Ramadan Series</p>
+      <h1 class="hero-title">Allah's Names</h1>
+      <p class="hero-subtitle">The Name I Need</p>
+      <p class="hero-author">Dr. Omar Suleiman &middot; Yaqeen Institute</p>
+      <a href="https://www.youtube.com/playlist?list=PLQ02IYL5pmhH0KWBrGxxR-lCCwlTFIVbm" target="_blank" class="btn-watch">Watch on YouTube</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2>About This Series</h2>
+      <p>
+        In this Ramadan 2026 series, Dr. Omar Suleiman takes us on a deeply personal journey through the
+        Names of Allah. Each episode explores a divine name that speaks to a universal human need — from
+        feeling lost, to yearning for love, seeking justice, or searching for meaning. This site captures the
+        main lessons from each episode so you can reflect, review, and share the knowledge.
+      </p>
+    </div>
+  </section>
+
+  <!-- Search & Filter -->
+  <section class="controls">
+    <div class="container">
+      <input type="text" id="searchInput" placeholder="Search episodes..." aria-label="Search episodes">
+    </div>
+  </section>
+
+  <!-- Episodes Grid -->
+  <section class="episodes" id="episodes">
+    <div class="container">
+      <div class="episodes-grid" id="episodesGrid">
+        <!-- Episodes injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Episode Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="modal-video" id="modalVideo"></div>
+      <div class="modal-body">
+        <span class="modal-ep-badge" id="modalBadge"></span>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-lessons" id="modalLessons"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Built with care to share the knowledge from Dr. Omar Suleiman's Ramadan series.</p>
+      <p>Content &copy; <a href="https://yaqeeninstitute.org" target="_blank">Yaqeen Institute</a> &middot;
+        <a href="https://www.youtube.com/playlist?list=PLQ02IYL5pmhH0KWBrGxxR-lCCwlTFIVbm" target="_blank">YouTube Playlist</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="episodes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
