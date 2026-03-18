@@ -10,6 +10,20 @@
   const modalBadge = document.getElementById('modalBadge');
   const modalTitle = document.getElementById('modalTitle');
   const modalLessons = document.getElementById('modalLessons');
+  const themeToggle = document.getElementById('themeToggle');
+
+  // Theme toggle
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') document.documentElement.classList.add('light');
+  function updateToggleIcon() {
+    themeToggle.innerHTML = document.documentElement.classList.contains('light') ? '&#9728;' : '&#9790;';
+  }
+  updateToggleIcon();
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light');
+    localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+    updateToggleIcon();
+  });
 
   // Render all episode cards
   function renderEpisodes(filter = '') {

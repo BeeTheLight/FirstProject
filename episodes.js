@@ -318,5 +318,15 @@ const EPISODES = [
       "Every tear shed in sincerity, every prayer whispered in the night, is recorded.",
       "Allah rewards effort, not just results — your struggle itself has value."
     ]
+  },
+  {
+    ep: "Ep. 29",
+    title: "Even If the World Is Ending, Plant the Seed",
+    videoId: "4Tzxiwv8ndg",
+    lessons: [
+      "Al-Hayy, Al-Qayyum — The Ever-Living, The Sustainer of all existence.",
+      "Hope in Allah is not naive optimism — it is an act of worship rooted in certainty.",
+      "Even in the darkest moments, planting seeds of good is never wasted."
+    ]
   }
 ];
