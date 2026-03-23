@@ -2,14 +2,14 @@
  * App logic for Allah's Names — Lesson Viewer
  */
 (function () {
-  const grid = document.getElementById('episodesGrid');
-  const searchInput = document.getElementById('searchInput');
+  const list = document.getElementById('episodesList');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalClose = document.getElementById('modalClose');
   const modalVideo = document.getElementById('modalVideo');
   const modalBadge = document.getElementById('modalBadge');
   const modalTitle = document.getElementById('modalTitle');
   const modalLessons = document.getElementById('modalLessons');
+  const modalDuas = document.getElementById('modalDuas');
   const themeToggle = document.getElementById('themeToggle');
 
   // Theme toggle
@@ -25,24 +25,17 @@
     updateToggleIcon();
   });
 
-  // Render all episode cards
-  function renderEpisodes(filter = '') {
-    const lowerFilter = filter.toLowerCase();
-    const filtered = EPISODES.filter(ep =>
-      ep.title.toLowerCase().includes(lowerFilter) ||
-      ep.lessons.some(l => l.toLowerCase().includes(lowerFilter)) ||
-      ep.ep.toLowerCase().includes(lowerFilter)
-    );
-
-    grid.innerHTML = filtered.map((ep, i) => `
-      <article class="episode-card" data-index="${EPISODES.indexOf(ep)}" tabindex="0" role="button"
+  // Render all episodes as a list
+  function renderEpisodes() {
+    list.innerHTML = EPISODES.map((ep, i) => `
+      <article class="episode-row" data-index="${i}" tabindex="0" role="button"
               aria-label="Open ${ep.title}">
-        <div class="episode-card-thumb">
+        <div class="episode-row-thumb">
           <img src="https://img.youtube.com/vi/${ep.videoId}/mqdefault.jpg"
                alt="${ep.title}" loading="lazy">
           <div class="play-icon"></div>
         </div>
-        <div class="episode-card-body">
+        <div class="episode-row-body">
           <span class="ep-badge">${ep.ep}</span>
           <h3>${ep.title}</h3>
           <p class="lesson-preview">${ep.lessons[0] || ''}</p>
@@ -50,11 +43,10 @@
       </article>
     `).join('');
 
-    // Attach click listeners
-    grid.querySelectorAll('.episode-card').forEach(card => {
-      card.addEventListener('click', () => openModal(Number(card.dataset.index)));
-      card.addEventListener('keydown', e => {
-        if (e.key === 'Enter') openModal(Number(card.dataset.index));
+    list.querySelectorAll('.episode-row').forEach(row => {
+      row.addEventListener('click', () => openModal(Number(row.dataset.index)));
+      row.addEventListener('keydown', e => {
+        if (e.key === 'Enter') openModal(Number(row.dataset.index));
       });
     });
   }
@@ -79,6 +71,18 @@
     lessonsHTML += '</ul>';
     modalLessons.innerHTML = lessonsHTML;
 
+    // Render duas if available
+    if (ep.duas && ep.duas.length > 0) {
+      let duasHTML = '<h3>Closing Prayers</h3><ul>';
+      ep.duas.forEach(dua => {
+        duasHTML += `<li>${dua}</li>`;
+      });
+      duasHTML += '</ul>';
+      modalDuas.innerHTML = duasHTML;
+    } else {
+      modalDuas.innerHTML = '';
+    }
+
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -96,11 +100,6 @@
   });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeModal();
-  });
-
-  // Search
-  searchInput.addEventListener('input', e => {
-    renderEpisodes(e.target.value);
   });
 
   // Initial render
